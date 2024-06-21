@@ -29,6 +29,12 @@ def recortar_objeto(image, bbox):
 
     return objeto_recortado
 
+
+def aplicar_otsu(imagen_recortada):
+    gray_image = cv2.cvtColor(imagen_recortada, cv2.COLOR_BGR2GRAY)
+    _, otsu_mask = cv2.threshold(gray_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    return otsu_mask
+    
 def visualizar_objeto(image_path, txt_path):
     # Leer la imagen
     image = cv2.imread(image_path, cv2.IMREAD_COLOR)
@@ -46,7 +52,8 @@ def visualizar_objeto(image_path, txt_path):
 
             # Recortar la imagen
             cropped_image = recortar_objeto(image, bbox)
-
+            otsu_mask = aplicar_otsu(cropped_image)
+            
             # Mostrar la imagen recortada
             plt.figure(figsize=(6, 6))
             plt.imshow(cv2.cvtColor(cropped_image, cv2.COLOR_BGR2RGB))
@@ -54,6 +61,13 @@ def visualizar_objeto(image_path, txt_path):
             plt.axis('off')
             plt.show()
 
+             # Mostrar la imagen con umbralización de Otsu
+            plt.subplot(122)
+            plt.imshow(otsu_mask, cmap='gray')
+            plt.title('Umbralización de Otsu')
+            plt.axis('off')
+
+            plt.show()
             # Devolver la imagen recortada (opcional)
             return cropped_image
 
