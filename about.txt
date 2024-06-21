@@ -1,0 +1,14 @@
+About Dataset
+This dataset contains images of 5 of the rarest species of butterflies. The images for each of the species along with their annotation files have been organized into separate sub directories within the root folder. The name for each subdirectory is the corresponding name of the species. The annotation files have the same file names (except for the extension being 'txt' in place of 'jpg) as their corresponding image files. The annotation files follow YOLO format for specifying the bounding boxes. The annotation files have been made keeping only the respective species in mind, hence all annotation files will contain the id value as 0 for all bounding boxes. Each subdirectory also contains a classes.txt file.
+
+Note:
+There are no images containing butterflies of different species.
+
+The above structure for the dataset as well the strategy followed for annotation was done keeping scalability in mind, as there are approximately 20000 species of butterflies. A new species can be included in the dataset just by creating a new subdirectory and adding the corresponding images along with their annotation files without having to modify any existing file.
+
+The dataset contains a total of 419 images for training along with their corresponding annotation files and 38 more images for testing.
+
+Acknowledgements
+All these images have been collected by querying google with the corresponding species name. The source for each image has been mentioned in the "Sources.pdf" file and can be identified using the name of the subdirectory (species name) and file name. Sources for test images have been provided at the end of the pdf file.
+
+Banner image: file "Palos Verdes Blue.5.jpg" from "Test Data"
